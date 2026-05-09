@@ -1,5 +1,8 @@
 # EUR/USD 5-Minute Meta-Labeling Walk-Forward Research Notebook
 
+
+This project develops a statistically defensible event-driven machine learning pipeline for EUR/USD 5-minute data (2019–2022) using alpha-event generation, meta-labeling, rolling walk-forward validation, embargoing, PCA dimensionality reduction, XGBoost classification, top-k probability-based trade selection, and fully out-of-sample backtesting. The workflow begins with trend/pullback-based alpha signals (EMA50/EMA200 trend filter, RSI pullback, volatility filtering), followed by engineered momentum, volatility, range, and session features. Candidate events are meta-labeled based on future forward returns and evaluated using rolling retraining with strict train → embargo → test separation to eliminate look-ahead bias. PCA is fitted only on training folds before XGBoost models are retrained sequentially across the full dataset, producing chronological OOS probability forecasts used for sparse long-only trade selection. The resulting strategy is evaluated through confusion matrices, ROC-AUC analysis, equity curves, Backtesting.py execution simulation, QuantStats tear sheets, and probabilistic/deflated Sharpe ratio diagnostics. Results suggest the presence of weak but potentially genuine predictive structure, while DSR analysis indicates that the observed edge is not yet statistically exceptional after accounting for multiple testing and research overfitting.
+
 ## Environment
 
 ```text
